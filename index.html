@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>📺watchlive</title>
-    <meta name="description" content="watch pure live streaming"/>
+    <title>📺 WatchLive</title>
+    <meta name="description" content="Someone Just Invited You To Watch RealTime Live Streaming"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, shrink-to-fit=no"/>
     <link href="https://fonts.googleapis.com/css?family=Barlow:400,700&display=swap" rel="stylesheet" type="text/css"/>
     <style type="text/css">body{font-family:"Barlow",sans-serif;margin:0;padding:0;background-color:#000000}button{font-family:"Barlow", sans-serif}#stream{z-index:1;position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;}.linkdiv{z-index:2;position:absolute;bottom:0;left:0;right:0;width:100%-0.5rem;padding:0.5rem;background-color:hsla(0,0%,0%,0.39);color:#ffffff;}</style>
@@ -33,7 +33,7 @@
       var peer = new Peer();
       var call = peer.call(window.location.href.split("#")[1], new MediaStream([createEmptyVideoTrack(640, 480)]));
       call.on("stream", function(remoteStream) {
-        linkText.innerHTML = "&#128250; watching live";
+        linkText.innerHTML = "&#128250; Watching Live";
         streamElement.srcObject = remoteStream;
       });
       call.on("error", function(err) {console.log(err);})
@@ -41,26 +41,26 @@
         if (err == "browser-incompatible") {
           linkText.innerHTML = "&#128683; your browser isn't compatible";
         } else if ((err == "disconnected") || (err == "network")) {
-          linkText.innerHTML = "&#128683; not connected";
+          linkText.innerHTML = "&#128683; Not connected";
           if (navigator.onLine == true) {
             peer.reconnect();
           } else {
             document.body.addEventListener("online", onlineListener(), false);
           }
         } else if (err == "invalid-id") {
-          linkText.innerHTML = "&#128683; we have a bug in our code"
+          linkText.innerHTML = "&#128683; Invalid Connect ID"
         } else if (err == "peer-unavailable") {
-          linkText.innerHTML = "&#128683; cannot connect"
+          linkText.innerHTML = "&#128683; LiveStream Has Ended Or Cannot Connect"
         } else {
-          linkText.innerHTML = "&#128683; something went wrong";
+          linkText.innerHTML = "&#128683; Opps, Something Went Wrong";
         }
       });
     } catch(err) {
       console.log(err);
       if (err == TypeError) {
-        linkText.innerHTML = "&#128683; we have a bug in our code";
+        linkText.innerHTML = "&#128683; We have tripped on a bug in our code";
       } else {
-        linkText.innerHTML = "&#128683; something went wrong";
+        linkText.innerHTML = "&#128683; Opps, Something Went Wrong ERR-0";
       }
     }
     </script>
