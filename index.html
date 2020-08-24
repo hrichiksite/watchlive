@@ -39,7 +39,7 @@
       call.on("error", function(err) {console.log(err);})
       peer.on("error", function(err) {
         if (err == "browser-incompatible") {
-          linkText.innerHTML = "&#128683; your browser isn't compatible";
+          linkText.innerHTML = "&#128683; Your Browser Isn't Compatible";
         } else if ((err == "disconnected") || (err == "network")) {
           linkText.innerHTML = "&#128683; Not connected";
           if (navigator.onLine == true) {
